@@ -101,9 +101,8 @@ def submit_modal(request):
 
     form = ModalLeadForm(request.POST)
     if form.is_valid():
-        if form.cleaned_data.get("website"):
-            return _redirect_thank_you()
-        _save_lead(form)
+        if not form.cleaned_data.get("website"):
+            _save_lead(form)
         return _redirect_thank_you()
 
     return HttpResponse(
