@@ -1,0 +1,23 @@
+{% load i18n %}<footer class="footer">
+  <div class="footer__inner container">
+    <div>
+      <a href="{% url 'core:home' %}" class="footer__logo">DO<span>u</span>IT</a>
+      <p class="footer__copy">&copy; {{ site_settings.site_name|default:"DOuIT" }}, {% now "Y" %}. {% trans "Сайти на чистому коді." %}</p>
+    </div>
+
+    <div class="footer__links">
+      <a href="{% url 'services:ecommerce' %}" class="footer__link">{% trans "Інтернет-магазини" %}</a>
+      <a href="{% url 'services:landing' %}" class="footer__link">{% trans "Лендінги" %}</a>
+      <a href="{% url 'services:corporate' %}" class="footer__link">{% trans "Корпоративні сайти" %}</a>
+    </div>
+
+    <div class="footer__links">
+      {% if site_settings and site_settings.phone %}
+      <a href="tel:{{ site_settings.phone }}" class="footer__link">{{ site_settings.phone }}</a>
+      {% endif %}
+      {% if site_settings and site_settings.email %}
+      <a href="mailto:{{ site_settings.email }}" class="footer__link">{{ site_settings.email }}</a>
+      {% endif %}
+    </div>
+  </div>
+</footer>

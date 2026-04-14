@@ -1,0 +1,10 @@
+{% load static i18n %}
+<dialog class="lead-modal lead-modal--quiz" id="lead-modal" aria-labelledby="lead-modal-title">
+  <div class="lead-modal__inner">
+    <button class="lead-modal__close" aria-label="{% trans "Закрити" %}" data-close-modal>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <h2 class="lead-modal__title" id="lead-modal-title">{% trans "Розрахувати ваш проєкт" %}</h2>
+    {% include "components/quiz_steps.html" %}
+  </div>
+</dialog>

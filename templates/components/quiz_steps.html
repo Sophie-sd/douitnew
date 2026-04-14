@@ -1,0 +1,163 @@
+{% load static i18n %}
+<div class="quiz" data-quiz>
+  <!-- Progress bar -->
+  <div class="quiz__progress">
+    <div class="quiz__progress-bar" data-quiz-progress></div>
+    <span class="quiz__progress-text" data-quiz-progress-text>{% trans "Крок 1 з 6" %}</span>
+  </div>
+
+  <!-- Step 1: Site type -->
+  <div class="quiz__step is-active" data-quiz-step="1">
+    <h3 class="quiz__title">{% trans "Який тип сайту вам потрібен?" %}</h3>
+    <div class="quiz__options" data-quiz-field="project_type" data-quiz-mode="radio">
+      <button type="button" class="quiz__option" data-quiz-value="ecommerce">
+        <span class="quiz__option-icon" aria-hidden="true">&#128722;</span>
+        <span class="quiz__option-label">{% trans "Інтернет-магазин" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="landing">
+        <span class="quiz__option-icon" aria-hidden="true">&#127919;</span>
+        <span class="quiz__option-label">{% trans "Лендінг" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="corporate">
+        <span class="quiz__option-icon" aria-hidden="true">&#127970;</span>
+        <span class="quiz__option-label">{% trans "Корпоративний сайт" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="other">
+        <span class="quiz__option-icon" aria-hidden="true">&#128301;</span>
+        <span class="quiz__option-label">{% trans "Інше" %}</span>
+      </button>
+    </div>
+    <div class="quiz__nav">
+      <span></span>
+      <button type="button" class="quiz__skip" data-quiz-skip>{% trans "Пропустити" %}</button>
+      <button type="button" class="btn btn--primary" data-quiz-next disabled>{% trans "Далі" %}</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Features (multi-select) -->
+  <div class="quiz__step" data-quiz-step="2">
+    <h3 class="quiz__title">{% trans "Який функціонал потрібен?" %}</h3>
+    <p class="quiz__hint">{% trans "Можна обрати кілька варіантів" %}</p>
+    <div class="quiz__options quiz__options--multi" data-quiz-field="quiz_features" data-quiz-mode="checkbox">
+      <button type="button" class="quiz__option" data-quiz-value="admin">
+        <span class="quiz__option-icon" aria-hidden="true">&#9881;</span>
+        <span class="quiz__option-label">{% trans "Адмінка" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="catalog">
+        <span class="quiz__option-icon" aria-hidden="true">&#128230;</span>
+        <span class="quiz__option-label">{% trans "Каталог товарів" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="payment">
+        <span class="quiz__option-icon" aria-hidden="true">&#128179;</span>
+        <span class="quiz__option-label">{% trans "Онлайн-оплата" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="crm">
+        <span class="quiz__option-icon" aria-hidden="true">&#128200;</span>
+        <span class="quiz__option-label">{% trans "CRM інтеграція" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="multilang">
+        <span class="quiz__option-icon" aria-hidden="true">&#127760;</span>
+        <span class="quiz__option-label">{% trans "Мультимовність" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="blog">
+        <span class="quiz__option-icon" aria-hidden="true">&#128221;</span>
+        <span class="quiz__option-label">{% trans "Блог" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="forms">
+        <span class="quiz__option-icon" aria-hidden="true">&#128233;</span>
+        <span class="quiz__option-label">{% trans "Форми заявок" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="other">
+        <span class="quiz__option-icon" aria-hidden="true">&#128736;</span>
+        <span class="quiz__option-label">{% trans "Інше" %}</span>
+      </button>
+    </div>
+    <div class="quiz__nav">
+      <button type="button" class="btn btn--ghost" data-quiz-prev>{% trans "Назад" %}</button>
+      <button type="button" class="quiz__skip" data-quiz-skip>{% trans "Пропустити" %}</button>
+      <button type="button" class="btn btn--primary" data-quiz-next>{% trans "Далі" %}</button>
+    </div>
+  </div>
+
+  <!-- Step 3: Number of pages -->
+  <div class="quiz__step" data-quiz-step="3">
+    <h3 class="quiz__title">{% trans "Скільки сторінок плануєте?" %}</h3>
+    <div class="quiz__options" data-quiz-field="quiz_pages" data-quiz-mode="radio">
+      <button type="button" class="quiz__option" data-quiz-value="1-5">
+        <span class="quiz__option-label">1 – 5</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="6-15">
+        <span class="quiz__option-label">6 – 15</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="16-50">
+        <span class="quiz__option-label">16 – 50</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="50+">
+        <span class="quiz__option-label">50+</span>
+      </button>
+    </div>
+    <div class="quiz__nav">
+      <button type="button" class="btn btn--ghost" data-quiz-prev>{% trans "Назад" %}</button>
+      <button type="button" class="quiz__skip" data-quiz-skip>{% trans "Пропустити" %}</button>
+      <button type="button" class="btn btn--primary" data-quiz-next disabled>{% trans "Далі" %}</button>
+    </div>
+  </div>
+
+  <!-- Step 4: Deadline -->
+  <div class="quiz__step" data-quiz-step="4">
+    <h3 class="quiz__title">{% trans "У які терміни потрібен сайт?" %}</h3>
+    <div class="quiz__options" data-quiz-field="quiz_deadline" data-quiz-mode="radio">
+      <button type="button" class="quiz__option" data-quiz-value="2weeks">
+        <span class="quiz__option-label">{% trans "До 2 тижнів" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="2-4weeks">
+        <span class="quiz__option-label">{% trans "2 – 4 тижні" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="1-2months">
+        <span class="quiz__option-label">{% trans "1 – 2 місяці" %}</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="no-rush">
+        <span class="quiz__option-label">{% trans "Не поспішаю" %}</span>
+      </button>
+    </div>
+    <div class="quiz__nav">
+      <button type="button" class="btn btn--ghost" data-quiz-prev>{% trans "Назад" %}</button>
+      <button type="button" class="quiz__skip" data-quiz-skip>{% trans "Пропустити" %}</button>
+      <button type="button" class="btn btn--primary" data-quiz-next disabled>{% trans "Далі" %}</button>
+    </div>
+  </div>
+
+  <!-- Step 5: Budget -->
+  <div class="quiz__step" data-quiz-step="5">
+    <h3 class="quiz__title">{% trans "Який у вас бюджет?" %}</h3>
+    <div class="quiz__options" data-quiz-field="quiz_budget" data-quiz-mode="radio">
+      <button type="button" class="quiz__option" data-quiz-value="up-to-500">
+        <span class="quiz__option-label">До $500</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="500-1500">
+        <span class="quiz__option-label">$500 – $1 500</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="1500-3000">
+        <span class="quiz__option-label">$1 500 – $3 000</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="3000+">
+        <span class="quiz__option-label">$3 000+</span>
+      </button>
+      <button type="button" class="quiz__option" data-quiz-value="need-estimate">
+        <span class="quiz__option-label">{% trans "Потрібна оцінка" %}</span>
+      </button>
+    </div>
+    <div class="quiz__nav">
+      <button type="button" class="btn btn--ghost" data-quiz-prev>{% trans "Назад" %}</button>
+      <button type="button" class="quiz__skip" data-quiz-skip>{% trans "Пропустити" %}</button>
+      <button type="button" class="btn btn--primary" data-quiz-next disabled>{% trans "Далі" %}</button>
+    </div>
+  </div>
+
+  <!-- Step 6: Contact form -->
+  <div class="quiz__step" data-quiz-step="6">
+    <h3 class="quiz__title">{% trans "Залиште контакти для розрахунку" %}</h3>
+    <p class="quiz__hint">{% trans "Ми зателефонуємо протягом кількох годин" %}</p>
+    {% include "components/quiz_contact_step.html" %}
+  </div>
+</div>

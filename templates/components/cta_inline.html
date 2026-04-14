@@ -1,0 +1,9 @@
+{% load i18n %}
+<div class="cta-inline">
+  <span class="cta-inline__badge">{{ cta_badge }}</span>
+  <p class="cta-inline__text">{{ cta_text|default:"Готові обговорити ваш проєкт?" }}</p>
+  <button type="button" class="btn btn--primary btn--lg" data-open-contact>
+    {{ cta_button|default:"Залишити заявку" }}
+  </button>
+  <p class="cta-inline__note">{% trans "Відповімо протягом 30 хвилин" %}</p>
+</div>

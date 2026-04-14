@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Розрахувати ваш проєкт | DOuIT{% endblock %}
+{% block meta_description %}Дайте відповідь на 5 запитань і отримайте індивідуальний розрахунок вартості вашого сайту.{% endblock %}
+
+{% block extra_head %}
+<meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block content %}
+<section class="section quiz-page">
+  <div class="container">
+    <div class="quiz-page__inner">
+      <h1 class="quiz-page__title">Розрахувати ваш проєкт</h1>
+      <p class="quiz-page__subtitle">Дайте відповідь на 5 запитань — ми підготуємо індивідуальну оцінку</p>
+      {% include "components/quiz_steps.html" %}
+    </div>
+  </div>
+</section>
+{% endblock %}

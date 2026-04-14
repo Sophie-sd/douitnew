@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "DOuIT",
+  "url": "{{ request.scheme }}://{{ request.get_host }}"
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 767px)" srcset="{% static 'images/hiromainm.webp' %}" type="image/webp">
+      <img src="{% static 'images/hiromain.webp' %}" alt="" loading="eager" data-parallax="0.3">
+    </picture>
+  </div>
+  <div class="hero__inner container">
+    <div class="hero__content">
+      <h1 class="hero__title">
+        {% trans "Неймовірна швидкість" %}<br>
+        {% trans "та гнучкість" %}<br>
+        <span class="hero__title--accent">{% trans "кодописного сайту" %}</span><br>
+        {% trans "на чистому коді" %}
+      </h1>
+      <p class="hero__sub">{% blocktrans %}Повністю <strong>україномовна панель керування сайтом</strong>, створена спеціально для вашого проєкту{% endblocktrans %}</p>
+      <div class="hero__actions">
+        <button type="button" class="btn btn--primary btn--lg" data-open-modal>{% trans "Розрахувати ваш проєкт" %}</button>
+        <button type="button" class="btn btn--ghost btn--lg" data-open-contact>{% trans "Замовити дзвінок" %}</button>
+      </div>
+    </div>
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__orb"></div>
+      <div class="hero__orb-secondary"></div>
+      <div class="hero__shape--grid"></div>
+      <div class="hero__shape--square"></div>
+      <div class="hero__shape--square-2"></div>
+      <div class="hero__shape--circle"></div>
+      <div class="hero__shape--dot"></div>
+      <div class="hero__shape--dot-2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAIN / SOLUTION ===== -->
+<section class="section" aria-labelledby="pain-title">
+  <div class="container">
+    <h2 class="section__title text-center reveal--slide-left" id="pain-title">{% trans "Чому не конструктор?" %}</h2>
+    <p class="section__subtitle text-center reveal--slide-left">{% trans "Сайти-конструктори — це швидкий старт, але повільний фініш. Ось чому чистий код перемагає." %}</p>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <img class="pain-card__icon" src="{% static 'images/django-python.webp' %}" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+        <h3 class="pain-card__title">{% trans "Швидкість завантаження" %}</h3>
+        <p class="pain-card__text">{% trans "Конструктори додають зайвий код та плагіни. Кодописний сайт завантажується у 2-5 разів швидше, що покращує позиції в Google." %}</p>
+      </div>
+      <div class="pain-card reveal">
+        <img class="pain-card__icon" src="{% static 'images/seo.webp' %}" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+        <h3 class="pain-card__title">{% trans "SEO без обмежень" %}</h3>
+        <p class="pain-card__text">{% trans "Повний контроль над HTML-розміткою, Schema.org, мета-тегами. Жодних обмежень платформи — лише чиста семантика для пошукових систем." %}</p>
+      </div>
+      <div class="pain-card reveal">
+        <img class="pain-card__icon" src="{% static 'images/mashtab.webp' %}" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+        <h3 class="pain-card__title">{% trans "Масштабування" %}</h3>
+        <p class="pain-card__text">{% trans "Потрібна нова функція? Інтеграція з CRM? Особливий кошик? На чистому коді все можливо — без обмежень шаблону." %}</p>
+      </div>
+    </div>
+    {% trans "Хочете швидкий і гнучкий сайт?" as cta_txt %}{% trans "Безкоштовна консультація" as cta_btn %}
+    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge="Консультація" %}
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="section section--with-bg" id="services" aria-labelledby="services-title">
+  <div class="section__bg" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 767px)" srcset="{% static 'images/hiromainm.webp' %}" type="image/webp">
+      <img src="{% static 'images/hiromain.webp' %}" alt="" loading="lazy">
+    </picture>
+  </div>
+  <div class="container">
+    <h2 class="section__title text-center reveal--slide-left" id="services-title">{% trans "Послуги та ціни" %}</h2>
+    <p class="section__subtitle text-center reveal--slide-left">{% trans "Кожен проєкт — індивідуальний. Нижче орієнтовна вартість для старту." %}</p>
+    <div class="service-cards">
+      {% for service in services %}
+        {% include "components/service_card.html" %}
+      {% endfor %}
+    </div>
+    {% trans "Не знаєте, що обрати?" as cta_txt %}{% trans "Отримати консультацію" as cta_btn %}
+    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge="Допоможемо обрати" %}
+  </div>
+</section>
+
+<!-- ===== ADVANTAGES ===== -->
+<section class="section" aria-labelledby="advantages-title">
+  <div class="container">
+    <h2 class="section__title text-center reveal--slide-left" id="advantages-title">{% trans "Переваги кодописного підходу" %}</h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/django-python.webp' %}" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Django + Python" %}</h3>
+        <p class="feature-card__text">{% trans "Один з найнадійніших стеків у світі. Instagram, Pinterest, Spotify — всі на Django." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/ukrain.webp' %}" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Адмінка українською" %}</h3>
+        <p class="feature-card__text">{% trans "Зрозумілий інтерфейс управління контентом рідною мовою. Змінюйте тексти, ціни, фото — без розробника." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/bliskavica.webp' %}" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Блискавична швидкість" %}</h3>
+        <p class="feature-card__text">{% trans "Мінімальний CSS та JS. Оптимізація Core Web Vitals. Ваш сайт завантажується швидше за конкурентів." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/bezpec.webp' %}" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Безпека" %}</h3>
+        <p class="feature-card__text">{% trans "Django має вбудований захист від CSRF, XSS, SQL-ін'єкцій. Ваш сайт та дані клієнтів під надійним захистом." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/mobfirst.webp' %}" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Mobile-first" %}</h3>
+        <p class="feature-card__text">{% trans "Верстка з нуля під мобільні. Ідеальне відображення на iPhone, Android, планшетах — без компромісів." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/pidtrumka.webp' %}" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Підтримка та розвиток" %}</h3>
+        <p class="feature-card__text">{% trans "Після запуску не кидаємо. Технічна підтримка, оновлення, нові функції — ваш сайт росте разом з бізнесом." %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  {% trans "Дізнайтеся вартість вашого проєкту" as cta_txt %}{% trans "Розрахувати вартість" as cta_btn %}
+  {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge="Без зобов'язань" %}
+</div>
+
+<!-- ===== PORTFOLIO ===== -->
+{% if portfolio %}
+<section class="section" aria-labelledby="portfolio-title">
+  <div class="container">
+    <h2 class="section__title text-center" id="portfolio-title">{% trans "Наші роботи" %}</h2>
+    <div class="portfolio-grid">
+      {% for item in portfolio %}
+      <article class="portfolio-card reveal">
+        <img class="portfolio-card__img"
+             src="{{ item.screenshot.url }}"
+             alt="{{ item.title }}"
+             loading="lazy"
+             width="600"
+             height="375">
+        <div class="portfolio-card__body">
+          <h3 class="portfolio-card__title">{{ item.title }}</h3>
+          <p class="portfolio-card__desc">{{ item.description }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% trans "Хочете такий самий результат?" as cta_txt %}{% trans "Обговорити проєкт" as cta_btn %}
+    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge="Безкоштовна оцінка" %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ===== TESTIMONIALS ===== -->
+{% if testimonials %}
+<section class="section" aria-labelledby="testimonials-title">
+  <div class="container">
+    <h2 class="section__title reveal--slide-left" id="testimonials-title">{% trans "Що кажуть клієнти" %}</h2>
+    <div class="testimonials__track">
+      {% for testimonial in testimonials %}
+        {% include "components/testimonial_card.html" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ===== FINAL CTA ===== -->
+<section class="section section--with-bg">
+  <div class="section__bg" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 767px)" srcset="{% static 'images/hiromainm.webp' %}" type="image/webp">
+      <img src="{% static 'images/hiromain.webp' %}" alt="" loading="lazy">
+    </picture>
+  </div>
+  <div class="container">
+    {% trans "Давайте створимо ваш сайт" as cta_title %}{% trans "Залиште заявку — обговоримо деталі та розрахуємо точну вартість вашого проєкту." as cta_sub %}
+    {% include "components/cta_banner.html" with cta_title=cta_title cta_subtitle=cta_sub %}
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Дякуємо за заявку | DOuIT{% endblock %}
+{% block meta_description %}Ваша заявка прийнята. Ми зв'яжемося з вами найближчим часом.{% endblock %}
+
+{% block extra_head %}
+<meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{% block content %}
+<section class="thank-you section">
+  <div class="container">
+    <div class="thank-you__inner">
+      <div class="thank-you__icon" aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="38" stroke="url(#ty-grad)" stroke-width="3"/>
+          <path d="M24 42l10 10 22-22" stroke="url(#ty-grad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs><linearGradient id="ty-grad" x1="0" y1="0" x2="80" y2="80"><stop stop-color="#3b5cc6"/><stop offset="1" stop-color="#6b8cff"/></linearGradient></defs>
+        </svg>
+      </div>
+      <h1 class="thank-you__title">Дякуємо за заявку!</h1>
+      <p class="thank-you__text">Ми отримали ваше звернення та зв'яжемося з вами протягом кількох годин.</p>
+      <a href="{% url 'core:home' %}" class="btn btn--primary btn--lg">Повернутися на головну</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

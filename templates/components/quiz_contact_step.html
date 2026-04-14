@@ -1,0 +1,66 @@
+{% load static i18n %}
+<form class="lead-form lead-form--modal" id="quiz-contact-form"
+      hx-post="{% url 'leads:submit_modal' %}"
+      hx-target="#quiz-contact-form"
+      hx-swap="outerHTML"
+      hx-indicator="find .btn">
+  {% csrf_token %}
+
+  {% if rate_limited %}
+  <p class="lead-form__rate-error">{% trans "Забагато заявок. Спробуйте за кілька хвилин." %}</p>
+  {% endif %}
+
+  <div class="lead-form__field">
+    <label class="lead-form__label" for="quiz_id_name">{% trans "Ваше ім'я" %}</label>
+    <input class="lead-form__input"
+           type="text"
+           name="name"
+           id="quiz_id_name"
+           placeholder="{% trans "Ваше ім'я" %}"
+           autocomplete="name"
+           required
+           {% if form.name.value %}value="{{ form.name.value }}"{% endif %}>
+    {% if form.name.errors %}
+    <p class="lead-form__error">{{ form.name.errors.0 }}</p>
+    {% endif %}
+  </div>
+
+  <div class="lead-form__field">
+    <label class="lead-form__label" for="quiz_id_phone">{% trans "Телефон" %}</label>
+    <input class="lead-form__input"
+           type="tel"
+           name="phone"
+           id="quiz_id_phone"
+           placeholder="+380 XX XXX XXXX"
+           autocomplete="tel"
+           data-phone-ua
+           required
+           {% if form.phone.value %}value="{{ form.phone.value }}"{% endif %}>
+    {% if form.phone.errors %}
+    <p class="lead-form__error">{{ form.phone.errors.0 }}</p>
+    {% endif %}
+  </div>
+
+  <!-- Quiz answers (filled by JS before submit) -->
+  <input type="hidden" name="project_type" data-quiz-hidden="project_type">
+  <input type="hidden" name="quiz_features" data-quiz-hidden="quiz_features">
+  <input type="hidden" name="quiz_pages" data-quiz-hidden="quiz_pages">
+  <input type="hidden" name="quiz_deadline" data-quiz-hidden="quiz_deadline">
+  <input type="hidden" name="quiz_budget" data-quiz-hidden="quiz_budget">
+
+  <!-- Honeypot -->
+  <div class="sr-only" aria-hidden="true">
+    <input type="text" name="website" tabindex="-1" autocomplete="off">
+  </div>
+
+  <!-- UTM -->
+  <input type="hidden" name="utm_source" data-utm="source">
+  <input type="hidden" name="utm_medium" data-utm="medium">
+  <input type="hidden" name="utm_campaign" data-utm="campaign">
+  <input type="hidden" name="source_url" data-utm="url">
+
+  <div class="quiz__nav">
+    <button type="button" class="btn btn--ghost" data-quiz-prev>{% trans "Назад" %}</button>
+    <button type="submit" class="btn btn--primary">{% trans "Отримати розрахунок" %}</button>
+  </div>
+</form>

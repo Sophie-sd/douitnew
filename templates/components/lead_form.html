@@ -1,0 +1,82 @@
+{% load static i18n %}
+<form class="lead-form"
+      hx-post="{% url 'leads:submit' %}"
+      hx-target="closest .lead-form"
+      hx-swap="outerHTML"
+      hx-indicator="find .btn"
+      hx-history="false">
+  {% csrf_token %}
+
+  {% if rate_limited %}
+  <p class="lead-form__rate-error">{% trans "Забагато заявок. Спробуйте за кілька хвилин." %}</p>
+  {% endif %}
+
+  <div class="lead-form__field">
+    <label class="lead-form__label" for="id_name">{% trans "Ваше ім'я" %}</label>
+    <input class="lead-form__input"
+           type="text"
+           name="name"
+           id="id_name"
+           placeholder="{% trans "Ваше ім'я" %}"
+           autocomplete="name"
+           required
+           {% if form.name.value %}value="{{ form.name.value }}"{% endif %}>
+    {% if form.name.errors %}
+    <p class="lead-form__error">{{ form.name.errors.0 }}</p>
+    {% endif %}
+  </div>
+
+  <div class="lead-form__field">
+    <label class="lead-form__label" for="id_contact">{% trans "Телефон" %}</label>
+    <input class="lead-form__input"
+           type="tel"
+           name="contact"
+           id="id_contact"
+           placeholder="+38(0__)___-__-__"
+           autocomplete="tel"
+           data-phone-ua
+           required
+           {% if form.contact.value %}value="{{ form.contact.value }}"{% endif %}>
+    {% if form.contact.errors %}
+    <p class="lead-form__error">{{ form.contact.errors.0 }}</p>
+    {% endif %}
+  </div>
+
+  {% if not hide_project_type %}
+  <div class="lead-form__field">
+    <label class="lead-form__label" for="id_project_type">{% trans "Тип проєкту" %}</label>
+    <div class="lead-form__select-wrap">
+      <select class="lead-form__select" name="project_type" id="id_project_type">
+        <option value="ecommerce" {% if form.project_type.value == "ecommerce" %}selected{% endif %}>{% trans "Інтернет-магазин" %}</option>
+        <option value="landing" {% if form.project_type.value == "landing" %}selected{% endif %}>{% trans "Лендінг" %}</option>
+        <option value="corporate" {% if form.project_type.value == "corporate" %}selected{% endif %}>{% trans "Корпоративний сайт" %}</option>
+        <option value="other" {% if form.project_type.value == "other" %}selected{% endif %}>{% trans "Інше" %}</option>
+      </select>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="lead-form__field">
+    <label class="lead-form__label" for="id_comment">{% trans "Розкажіть про проєкт" %}</label>
+    <textarea class="lead-form__textarea"
+              name="comment"
+              id="id_comment"
+              rows="3"
+              placeholder="{% trans "Коротко опишіть задачу (необов'язково)" %}">{% if form.comment.value %}{{ form.comment.value }}{% endif %}</textarea>
+  </div>
+
+  <!-- Honeypot -->
+  <div class="sr-only" aria-hidden="true">
+    <input type="text" name="website" tabindex="-1" autocomplete="off">
+  </div>
+
+  <!-- UTM hidden fields -->
+  <input type="hidden" name="utm_source" data-utm="source">
+  <input type="hidden" name="utm_medium" data-utm="medium">
+  <input type="hidden" name="utm_campaign" data-utm="campaign">
+  <input type="hidden" name="source_url" data-utm="url">
+
+  <button type="submit" class="btn btn--primary btn--block">
+    {% trans "Надіслати заявку" %}
+  </button>
+</form>

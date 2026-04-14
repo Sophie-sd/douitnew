@@ -1,0 +1,7 @@
+{% load i18n %}
+<div class="cta-banner" id="contact">
+  <h2 class="cta-banner__title">{{ cta_title|default:"Давайте створимо ваш сайт" }}</h2>
+  <p class="cta-banner__subtitle">{{ cta_subtitle|default:"Залиште заявку — обговоримо деталі та розрахуємо точну вартість вашого проєкту." }}</p>
+  <button type="button" class="btn btn--primary btn--lg" data-open-contact>{% trans "Залишити заявку" %}</button>
+  <p class="cta-banner__note">{% trans "Без зобов'язань. Відповімо за 30 хвилин." %}</p>
+</div>

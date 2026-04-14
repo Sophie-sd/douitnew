@@ -1,0 +1,104 @@
+{% extends "services/_base.html" %}
+{% load i18n static %}
+
+{% block service_hero_bg %}
+<div class="service-hero__bg" aria-hidden="true">
+  <picture>
+    <source media="(max-width: 767px)" srcset="{% static 'images/hiroshopm.webp' %}" type="image/webp">
+    <img src="{% static 'images/hiroshop.webp' %}" alt="" loading="eager" data-parallax="0.3">
+  </picture>
+</div>
+{% endblock %}
+
+{% block intro_bg_picture %}
+<picture>
+  <source media="(max-width: 767px)" srcset="{% static 'images/hiroshopm.webp' %}" type="image/webp">
+  <img src="{% static 'images/hiroshop.webp' %}" alt="" loading="lazy">
+</picture>
+{% endblock %}
+
+{% block process_bg_picture %}
+<picture>
+  <source media="(max-width: 767px)" srcset="{% static 'images/hiroshopm.webp' %}" type="image/webp">
+  <img src="{% static 'images/hiroshop.webp' %}" alt="" loading="lazy">
+</picture>
+{% endblock %}
+
+{% block service_features %}
+<section class="section" aria-labelledby="features-title">
+  <div class="container">
+    <h2 class="section__title text-center" id="features-title">{% trans "Що входить у вартість" %}</h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/katalog.webp' %}" alt="" aria-hidden="true" width="96" height="96" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Каталог товарів" %}</h3>
+        <p class="feature-card__text">{% trans "Зручна структура категорій, фільтри, сортування, пошук." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/koshyk.webp' %}" alt="" aria-hidden="true" width="96" height="96" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Кошик та оформлення" %}</h3>
+        <p class="feature-card__text">{% trans "Швидке оформлення замовлення без обов'язкової реєстрації." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/oplata.webp' %}" alt="" aria-hidden="true" width="96" height="96" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Оплата онлайн" %}</h3>
+        <p class="feature-card__text">{% trans "LiqPay, Monobank, картки Visa/MasterCard." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/dostavka.webp' %}" alt="" aria-hidden="true" width="96" height="96" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Доставка" %}</h3>
+        <p class="feature-card__text">{% trans "Інтеграція з Новою Поштою, Укрпоштою." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/ukrain.webp' %}" alt="" aria-hidden="true" width="96" height="96" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Адмінка українською" %}</h3>
+        <p class="feature-card__text">{% trans "Додавайте товари, змінюйте ціни — все рідною мовою." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/seo.webp' %}" alt="" aria-hidden="true" width="96" height="96" loading="lazy">
+        <h3 class="feature-card__title">{% trans "SEO-оптимізація" %}</h3>
+        <p class="feature-card__text">{% trans "Чиста розмітка, мета-теги, Schema.org." %}</p>
+      </div>
+    </div>
+    {% trans "Потрібна індивідуальна оцінка?" as cta_txt %}{% trans "Безкоштовна консультація" as cta_btn %}
+    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_modal=True %}
+  </div>
+</section>
+{% endblock %}
+
+{% block service_extra %}
+<section class="section" aria-labelledby="ecom-why-title">
+  <div class="container">
+    <h2 class="section__title text-center" id="ecom-why-title">{% trans "Чому обирають кодописний інтернет-магазин" %}</h2>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <h3 class="pain-card__title">{% trans "Без щомісячних платежів" %}</h3>
+        <p class="pain-card__text">{% trans "На відміну від Shopify чи Prom.ua — ваш магазин повністю ваш. Жодних відсотків з продажів та абонплати за платформу." %}</p>
+      </div>
+      <div class="pain-card reveal">
+        <h3 class="pain-card__title">{% trans "Будь-який каталог" %}</h3>
+        <p class="pain-card__text">{% trans "Від 10 до 100 000 товарів. Фільтри, варіації, знижки, промокоди — все під ваш бізнес-процес." %}</p>
+      </div>
+      <div class="pain-card reveal">
+        <h3 class="pain-card__title">{% trans "Інтеграції" %}</h3>
+        <p class="pain-card__text">{% trans "Нова Пошта, LiqPay, Monobank, 1С, CRM — підключаємо все, що потрібно вашому бізнесу." %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block final_cta %}
+<section class="section section--with-bg">
+  <div class="section__bg" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 767px)" srcset="{% static 'images/hiroshopm.webp' %}" type="image/webp">
+      <img src="{% static 'images/hiroshop.webp' %}" alt="" loading="lazy">
+    </picture>
+  </div>
+  <div class="container">
+    {% trans "Давайте створимо ваш інтернет-магазин" as cta_title %}{% trans "Залиште заявку — обговоримо деталі та розрахуємо точну вартість." as cta_sub %}
+    {% include "components/cta_banner.html" with cta_title=cta_title cta_subtitle=cta_sub hide_project_type=True %}
+  </div>
+</section>
+{% endblock %}

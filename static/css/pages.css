@@ -1,0 +1,103 @@
+@layer pages {
+  /* ===== SERVICE PAGE HERO ===== */
+  .service-hero {
+    padding-block: var(--sp-3xl) var(--sp-2xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    clip-path: inset(0);
+  }
+
+  .service-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.68) 0%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+    z-index: 1;
+  }
+
+  .service-hero__bg picture,
+  .service-hero__bg img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+  }
+
+  .service-hero__bg picture {
+    height: 100vh;
+  }
+
+  .service-hero__bg picture img {
+    position: absolute;
+    height: 100%;
+  }
+
+  .service-hero .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .service-hero__price {
+    font-family: var(--ff-display);
+    font-size: var(--fs-3xl);
+    font-weight: 800;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--sp-sm);
+  }
+
+  .service-hero__price small {
+    font-size: var(--fs-lg);
+    font-weight: 400;
+    color: var(--clr-text-muted);
+  }
+
+  .service-hero__h1 {
+    font-family: var(--ff-display);
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    margin-bottom: var(--sp-md);
+  }
+
+  .service-hero__subtitle {
+    font-size: var(--fs-md);
+    color: var(--clr-text-muted);
+    max-width: 42ch;
+    margin-inline: auto;
+    margin-bottom: var(--sp-xl);
+  }
+
+  .service-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-md);
+    justify-content: center;
+  }
+
+  /* ===== SERVICE BODY ===== */
+  .service-intro {
+    font-size: var(--fs-md);
+    line-height: 1.8;
+    max-width: 60ch;
+    margin-inline: auto;
+    text-align: center;
+    color: var(--clr-text-muted);
+  }
+}

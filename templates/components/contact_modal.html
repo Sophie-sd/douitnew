@@ -1,0 +1,11 @@
+{% load static i18n %}
+<dialog class="lead-modal" id="contact-modal" aria-labelledby="contact-modal-title">
+  <div class="lead-modal__inner">
+    <button class="lead-modal__close" aria-label="{% trans 'Закрити' %}" data-close-modal>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <h2 class="lead-modal__title" id="contact-modal-title">{% trans "Замовити дзвінок" %}</h2>
+    <p class="lead-modal__subtitle">{% trans "Залиште номер — зателефонуємо протягом 30 хвилин" %}</p>
+    {% include "components/lead_form.html" with hide_project_type=True %}
+  </div>
+</dialog>

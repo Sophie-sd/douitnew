@@ -1,0 +1,94 @@
+{% extends "services/_base.html" %}
+{% load i18n static %}
+
+{% block service_hero_bg %}
+<div class="service-hero__bg" aria-hidden="true">
+  <picture>
+    <source media="(max-width: 767px)" srcset="{% static 'images/hirolandm.webp' %}" type="image/webp">
+    <img src="{% static 'images/hiroland.webp' %}" alt="" loading="eager" data-parallax="0.3">
+  </picture>
+</div>
+{% endblock %}
+
+{% block intro_bg_picture %}
+<picture>
+  <source media="(max-width: 767px)" srcset="{% static 'images/hirolandm.webp' %}" type="image/webp">
+  <img src="{% static 'images/hiroland.webp' %}" alt="" loading="lazy">
+</picture>
+{% endblock %}
+
+{% block process_bg_picture %}
+<picture>
+  <source media="(max-width: 767px)" srcset="{% static 'images/hirolandm.webp' %}" type="image/webp">
+  <img src="{% static 'images/hiroland.webp' %}" alt="" loading="lazy">
+</picture>
+{% endblock %}
+
+{% block service_features %}
+<section class="section" aria-labelledby="features-title">
+  <div class="container">
+    <h2 class="section__title text-center" id="features-title">{% trans "Що входить у вартість" %}</h2>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/cro.webp' %}" alt="" aria-hidden="true" width="96" height="96" loading="lazy">
+        <h3 class="feature-card__title">{% trans "CRO-оптимізація" %}</h3>
+        <p class="feature-card__text">{% trans "Кожен блок продуманий з точки зору конверсії." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/mobfirst.webp' %}" alt="" aria-hidden="true" width="96" height="96" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Mobile-first" %}</h3>
+        <p class="feature-card__text">{% trans "Спочатку мобільна версія, потім десктоп." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/utm.webp' %}" alt="" aria-hidden="true" width="96" height="96" loading="lazy">
+        <h3 class="feature-card__title">{% trans "UTM-трекінг" %}</h3>
+        <p class="feature-card__text">{% trans "Автоматичне збереження UTM-міток." %}</p>
+      </div>
+      <div class="feature-card reveal">
+        <img class="feature-card__icon" src="{% static 'images/forma.webp' %}" alt="" aria-hidden="true" width="96" height="96" loading="lazy">
+        <h3 class="feature-card__title">{% trans "Форма заявки" %}</h3>
+        <p class="feature-card__text">{% trans "HTMX-форма без перезавантаження сторінки." %}</p>
+      </div>
+    </div>
+    {% trans "Потрібна індивідуальна оцінка?" as cta_txt %}{% trans "Безкоштовна консультація" as cta_btn %}
+    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_modal=True %}
+  </div>
+</section>
+{% endblock %}
+
+{% block service_extra %}
+<section class="section" aria-labelledby="landing-why-title">
+  <div class="container">
+    <h2 class="section__title text-center" id="landing-why-title">{% trans "Чому кодописний лендінг конвертує краще" %}</h2>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <h3 class="pain-card__title">{% trans "Заточений під конверсію" %}</h3>
+        <p class="pain-card__text">{% trans "Кожен елемент продуманий: від заголовка до кнопки. CRO-оптимізація вже з коробки — ви отримуєте не шаблон, а конверсійну машину." %}</p>
+      </div>
+      <div class="pain-card reveal">
+        <h3 class="pain-card__title">{% trans "Миттєве завантаження" %}</h3>
+        <p class="pain-card__text">{% trans "Менше 1 секунди на мобільному. Кожна десята секунди затримки — мінус 7% конверсії. Ми не даємо втрачати клієнтів." %}</p>
+      </div>
+      <div class="pain-card reveal">
+        <h3 class="pain-card__title">{% trans "Готовий під рекламу" %}</h3>
+        <p class="pain-card__text">{% trans "UTM-трекінг, інтеграція з Google Analytics, Facebook Pixel. Ви бачите, звідки приходять клієнти та скільки коштує кожен лід." %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block final_cta %}
+<section class="section section--with-bg">
+  <div class="section__bg" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 767px)" srcset="{% static 'images/hirolandm.webp' %}" type="image/webp">
+      <img src="{% static 'images/hiroland.webp' %}" alt="" loading="lazy">
+    </picture>
+  </div>
+  <div class="container">
+    {% trans "Давайте створимо ваш лендінг" as cta_title %}{% trans "Залиште заявку — обговоримо деталі та розрахуємо точну вартість." as cta_sub %}
+    {% include "components/cta_banner.html" with cta_title=cta_title cta_subtitle=cta_sub hide_project_type=True %}
+  </div>
+</section>
+{% endblock %}

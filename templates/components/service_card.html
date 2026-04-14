@@ -1,0 +1,6 @@
+{% load i18n %}<a href="{{ service.get_absolute_url }}" class="service-card reveal">
+  <h3 class="service-card__title">{{ service.h1 }}</h3>
+  <p class="service-card__price">{% trans "від" %} {{ service.price_currency }}{{ service.price_from }} <small>{% trans "під ключ" %}</small></p>
+  <p class="service-card__text">{{ service.hero_subtitle|truncatechars:120 }}</p>
+  <span class="btn btn--ghost btn--sm">{% trans "Детальніше" %}</span>
+</a>

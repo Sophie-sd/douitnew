@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+{% block og_title %}{{ meta_title }}{% endblock %}
+{% block og_description %}{{ meta_description }}{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">{{ service_json_ld|safe }}</script>
+{% if faqs %}
+<script type="application/ld+json">{{ faqs_json_ld|safe }}</script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== SERVICE HERO ===== -->
+<section class="service-hero section">
+  {% block service_hero_bg %}{% endblock %}
+  <div class="container">
+    <p class="service-hero__price">{% trans "від" %} {{ object.price_currency }}{{ object.price_from }} <small>{% trans "під ключ" %}</small></p>
+    <h1 class="service-hero__h1">{{ object.h1 }}</h1>
+    <p class="service-hero__subtitle">{{ object.hero_subtitle }}</p>
+    <div class="service-hero__actions">
+      <button type="button" class="btn btn--primary btn--lg" data-open-modal>{% trans "Розрахувати проєкт" %}</button>
+      <a href="#process" class="btn btn--ghost btn--lg">{% trans "Як ми працюємо" %}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTRO ===== -->
+{% if object.body_intro %}
+<section class="section section--with-bg">
+  <div class="section__bg" aria-hidden="true">
+    {% block intro_bg_picture %}
+    <picture>
+      <source media="(max-width: 767px)" srcset="{% static 'images/hiromainm.webp' %}" type="image/webp">
+      <img src="{% static 'images/hiromain.webp' %}" alt="" loading="lazy">
+    </picture>
+    {% endblock %}
+  </div>
+  <div class="container">
+    <p class="service-intro">{{ object.body_intro }}</p>
+  </div>
+</section>
+{% endif %}
+
+<!-- ===== FEATURES ===== -->
+{% block service_features %}
+{% if features %}
+<section class="section" aria-labelledby="features-title">
+  <div class="container">
+    <h2 class="section__title text-center" id="features-title">{% trans "Що входить у вартість" %}</h2>
+    <div class="features-grid">
+      {% for feature in features %}
+      <div class="feature-card reveal">
+        <h3 class="feature-card__title">{{ feature.title }}</h3>
+        <p class="feature-card__text">{{ feature.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% trans "Потрібна індивідуальна оцінка?" as cta_txt %}{% trans "Безкоштовна консультація" as cta_btn %}
+    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_modal=True %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}
+
+<!-- ===== PROCESS STEPS ===== -->
+{% if object.process_steps %}
+<section class="section section--with-bg" id="process" aria-labelledby="process-title">
+  <div class="section__bg" aria-hidden="true">
+    {% block process_bg_picture %}
+    <picture>
+      <source media="(max-width: 767px)" srcset="{% static 'images/hiromainm.webp' %}" type="image/webp">
+      <img src="{% static 'images/hiromain.webp' %}" alt="" loading="lazy">
+    </picture>
+    {% endblock %}
+  </div>
+  <div class="container">
+    <h2 class="section__title text-center" id="process-title">{% trans "Як ми працюємо" %}</h2>
+    <div class="process-steps">
+      {% for step in object.process_steps %}
+      <div class="process-step reveal">
+        <h3 class="process-step__title">{{ step.title }}</h3>
+        <p class="process-step__text">{{ step.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% trans "Готові обговорити ваш проєкт?" as cta_txt %}{% trans "Отримати оцінку проєкту" as cta_btn %}
+    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_modal=True %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ===== EXTRA CONTENT (per-service) ===== -->
+{% block service_extra %}{% endblock %}
+
+<div class="container">
+  {% trans "Залишилися питання?" as cta_txt %}{% trans "Дізнатися вартість" as cta_btn %}
+  {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_modal=True %}
+</div>
+
+<!-- ===== FAQ ===== -->
+{% if faqs %}
+<section class="section" aria-labelledby="faq-title">
+  <div class="container">
+    <h2 class="section__title text-center" id="faq-title">{% trans "Часті запитання" %}</h2>
+    <div class="faq-list">
+      {% for faq in faqs %}
+      <div class="faq-item">
+        <button class="faq-item__question" aria-expanded="false" data-faq-toggle>
+          {{ faq.question }}
+          <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-item__answer" role="region">
+          <div class="faq-item__answer-inner">
+            <p class="faq-item__answer-text">{{ faq.answer }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ===== FINAL CTA ===== -->
+{% block final_cta %}
+<section class="section section--with-bg">
+  <div class="section__bg" aria-hidden="true">
+    {% block final_cta_bg_picture %}
+    <picture>
+      <source media="(max-width: 767px)" srcset="{% static 'images/hiromainm.webp' %}" type="image/webp">
+      <img src="{% static 'images/hiromain.webp' %}" alt="" loading="lazy">
+    </picture>
+    {% endblock %}
+  </div>
+  <div class="container">
+    {% trans "Готові розпочати?" as cta_title %}{% trans "Залиште заявку — ми зв'яжемося протягом кількох годин та обговоримо ваш проєкт." as cta_sub %}
+    {% include "components/cta_banner.html" with cta_title=cta_title cta_subtitle=cta_sub %}
+  </div>
+</section>
+{% endblock %}
+
+{% endblock %}

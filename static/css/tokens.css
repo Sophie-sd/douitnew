@@ -1,0 +1,79 @@
+@layer tokens {
+  :root {
+    /* Colors — ink blue + pure black */
+    --clr-bg: #000000;
+    --clr-surface: #0d0d14;
+    --clr-surface-elevated: #161620;
+    --clr-text: #f0f0f5;
+    --clr-text-muted: #8888aa;
+    --clr-accent: #3b5cc6;
+    --clr-accent-hover: #2d4aaf;
+    --clr-accent-contrast: #ffffff;
+    --clr-outline: #ffffff;
+    --clr-outline-muted: #4a4a6a;
+    --clr-error: #ef4444;
+    --clr-success: #22c55e;
+
+    /* Glow & gradient effects */
+    --glow-accent: 0 0 40px rgba(59, 92, 198, 0.3), 0 0 80px rgba(59, 92, 198, 0.1);
+    --glow-accent-strong: 0 0 20px rgba(59, 92, 198, 0.5), 0 0 60px rgba(59, 92, 198, 0.25);
+    --glow-accent-subtle: 0 0 30px rgba(59, 92, 198, 0.15);
+    --gradient-accent: linear-gradient(135deg, #3b5cc6, #6b8cff);
+    --gradient-accent-vertical: linear-gradient(180deg, #3b5cc6, #6b8cff);
+    --gradient-surface: linear-gradient(135deg, rgba(59, 92, 198, 0.1), rgba(255, 255, 255, 0.02));
+    --gradient-surface-hover: linear-gradient(135deg, rgba(59, 92, 198, 0.18), rgba(255, 255, 255, 0.04));
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(59, 92, 198, 0.4);
+
+    /* Spacing scale */
+    --sp-xs: 0.25rem;
+    --sp-sm: 0.5rem;
+    --sp-md: 1rem;
+    --sp-lg: 1.5rem;
+    --sp-xl: 2rem;
+    --sp-2xl: 3rem;
+    --sp-3xl: 4rem;
+    --sp-4xl: 6rem;
+    --sp-section: clamp(3rem, 8vw, 7rem);
+
+    /* Type scale (fluid) */
+    --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --fs-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+    --fs-base: clamp(1rem, 0.9rem + 0.4vw, 1.125rem);
+    --fs-md: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+    --fs-lg: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+    --fs-xl: clamp(1.125rem, 0.85rem + 0.9vw, 1.7rem);
+    --fs-2xl: clamp(1.5rem, 1.05rem + 1.5vw, 2.25rem);
+    --fs-3xl: clamp(1.875rem, 1.2rem + 2.25vw, 3.375rem);
+
+    /* Font families */
+    --ff-display: "Unbounded", system-ui, sans-serif;
+    --ff-body: "Onest", system-ui, sans-serif;
+
+    /* Border radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.5rem;
+    --radius-xl: 2rem;
+    --radius-2xl: 2.5rem;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+
+    /* Breakpoints (for reference, used via @media) */
+    --bp-md: 48em;
+    --bp-lg: 64em;
+    --bp-xl: 80em;
+
+    /* Z-index scale */
+    --z-base: 1;
+    --z-sticky: 100;
+    --z-nav: 200;
+    --z-overlay: 300;
+    --z-fab: 400;
+  }
+}

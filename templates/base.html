@@ -1,0 +1,119 @@
+{% load static i18n %}<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block title %}{{ meta_title|default:_("Розробка сайтів на чистому коді | DOuIT") }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{{ meta_description|default:_("Кодописні сайти на Django з надзручною адмінкою українською. Інтернет-магазини, лендінги, корпоративні сайти — швидко, гнучко, надійно.") }}{% endblock %}">
+  <link rel="canonical" href="{{ request.build_absolute_uri }}">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="{{ LANGUAGE_CODE }}">
+  <link rel="alternate" hreflang="uk" href="{{ request.build_absolute_uri }}">
+  <link rel="alternate" hreflang="ru" href="{{ request.build_absolute_uri }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% block og_title %}{{ meta_title|default:_("DOuIT — Кодописні сайти") }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ meta_description|default:_("Розробка сайтів на чистому коді з адмінкою українською") }}{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:locale" content="{{ LANGUAGE_CODE }}_UA">
+  {% if site_settings and site_settings.og_image %}
+  <meta property="og:image" content="{{ site_settings.og_image.url }}">
+  {% else %}
+  <meta property="og:image" content="{% static 'images/og-default.jpg' %}">
+  {% endif %}
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ meta_title|default:"DOuIT" }}">
+  <meta name="twitter:description" content="{{ meta_description|default:_("Кодописні сайти на чистому коді") }}">
+
+  <!-- Favicon -->
+  <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Onest:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Onest:wght@400;600;700&display=swap"></noscript>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components.css' %}">
+  <link rel="stylesheet" href="{% static 'css/pages.css' %}">
+  <link rel="stylesheet" href="{% static 'css/utilities.css' %}">
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site_settings.site_name|default:"DOuIT" }}",
+    "url": "{{ request.scheme }}://{{ request.get_host }}",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "{{ site_settings.email|default:"" }}",
+      "telephone": "{{ site_settings.phone|default:"" }}",
+      "contactType": "sales",
+      "availableLanguage": "Ukrainian"
+    }
+  }
+  </script>
+
+  {% block extra_head %}{% endblock %}
+
+  {% if gtm_id %}
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','{{ gtm_id }}');</script>
+  <!-- End Google Tag Manager -->
+  {% endif %}
+</head>
+<body hx-boost="true" hx-indicator="#page-loader">
+  {% if gtm_id %}
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ gtm_id }}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  {% endif %}
+
+  {% include "components/navbar.html" %}
+
+  <div id="page-loader" class="htmx-indicator" aria-hidden="true"></div>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "components/footer.html" %}
+  {% include "components/messenger_fab.html" %}
+  {% include "components/sticky_mobile_cta.html" %}
+  {% include "components/lead_modal.html" %}
+  {% include "components/contact_modal.html" %}
+  {% include "components/lang_switch_modal.html" %}
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <button class="mobile-menu__close" aria-label="Закрити меню" data-menu-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <a href="{% url 'core:home' %}" class="mobile-menu__link">{% trans "Головна" %}</a>
+    <a href="{% url 'services:ecommerce' %}" class="mobile-menu__link">{% trans "Інтернет-магазини" %}</a>
+    <a href="{% url 'services:landing' %}" class="mobile-menu__link">{% trans "Лендінги" %}</a>
+    <a href="{% url 'services:corporate' %}" class="mobile-menu__link">{% trans "Корпоративні сайти" %}</a>
+    <button type="button" class="btn btn--primary" data-open-modal data-menu-close>{% trans "Розрахувати проєкт" %}</button>
+  </div>
+
+  <!-- HTMX -->
+  <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous" defer></script>
+  <script src="{% static 'js/main.js' %}" type="module" defer></script>
+  <script src="{% static 'js/messenger.js' %}" type="module" defer></script>
+  <script src="{% static 'js/lang-modal.js' %}" type="module" defer></script>
+
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

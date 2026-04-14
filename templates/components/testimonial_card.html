@@ -1,0 +1,12 @@
+<article class="testimonial-card">
+  <div class="testimonial-card__stars" aria-label="Рейтинг: {{ testimonial.rating }} з 5">
+    {% for i in "12345" %}{% if forloop.counter <= testimonial.rating %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}
+  </div>
+  <blockquote class="testimonial-card__text">{{ testimonial.text }}</blockquote>
+  <footer>
+    <p class="testimonial-card__author">{{ testimonial.name }}</p>
+    {% if testimonial.company %}
+    <p class="testimonial-card__company">{{ testimonial.company }}</p>
+    {% endif %}
+  </footer>
+</article>
