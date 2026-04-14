@@ -31,7 +31,12 @@ SECURE_HSTS_PRELOAD = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.onrender.com",
+    o.strip()
+    for o in os.environ.get(
+        "CSRF_TRUSTED_ORIGINS",
+        "https://*.onrender.com",
+    ).split(",")
+    if o.strip()
 ]
 
 LOGGING = {

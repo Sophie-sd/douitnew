@@ -13,7 +13,9 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: ALLOWED_HOSTS
-        value: .onrender.com
+        value: .onrender.com,douit.com.ua,www.douit.com.ua
+      - key: CSRF_TRUSTED_ORIGINS
+        value: https://*.onrender.com,https://douit.com.ua,https://www.douit.com.ua
       - key: DATABASE_URL
         fromDatabase:
           name: douit-db
