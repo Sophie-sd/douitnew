@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Нова заявка</title>
+<style>
+  body { margin: 0; padding: 0; background: #f4f4f5; font-family: Arial, Helvetica, sans-serif; }
+  .wrap { max-width: 600px; margin: 32px auto; background: #ffffff; border-radius: 8px; overflow: hidden; }
+  .header { background: #1a1a2e; padding: 28px 32px; }
+  .header h1 { margin: 0; color: #ffffff; font-size: 20px; font-weight: 700; }
+  .header p { margin: 6px 0 0; color: #a0a0c0; font-size: 13px; }
+  .section { padding: 24px 32px; border-bottom: 1px solid #f0f0f0; }
+  .section:last-child { border-bottom: none; }
+  .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #8b8b9e; margin: 0 0 14px; }
+  .row { display: flex; gap: 8px; margin-bottom: 10px; }
+  .row:last-child { margin-bottom: 0; }
+  .label { min-width: 140px; color: #8b8b9e; font-size: 13px; }
+  .value { color: #1a1a2e; font-size: 13px; font-weight: 600; word-break: break-word; }
+  .comment-box { background: #f8f8fb; border-left: 3px solid #6c63ff; padding: 10px 14px; border-radius: 0 4px 4px 0; font-size: 13px; color: #333; line-height: 1.5; }
+  .footer { background: #f8f8fb; padding: 16px 32px; text-align: center; font-size: 11px; color: #b0b0c0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <h1>Нова заявка від {{ lead.name }}</h1>
+    <p>{{ lead.get_project_type_display }} &middot; {{ lead.created_at|date:"d.m.Y H:i" }}</p>
+  </div>
+
+  <div class="section">
+    <p class="section-title">Контактні дані</p>
+    <div class="row"><span class="label">Ім&rsquo;я</span><span class="value">{{ lead.name }}</span></div>
+    <div class="row"><span class="label">Контакт</span><span class="value">{{ lead.contact }}</span></div>
+    <div class="row"><span class="label">Тип проєкту</span><span class="value">{{ lead.get_project_type_display }}</span></div>
+    {% if lead.comment %}
+    <div style="margin-top:12px">
+      <div class="comment-box">{{ lead.comment }}</div>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if lead.quiz_features or lead.quiz_pages or lead.quiz_deadline or lead.quiz_budget %}
+  <div class="section">
+    <p class="section-title">Квіз</p>
+    {% if lead.quiz_features %}
+    <div class="row"><span class="label">Функціонал</span><span class="value">{{ lead.quiz_features }}</span></div>
+    {% endif %}
+    {% if lead.quiz_pages %}
+    <div class="row"><span class="label">Кількість сторінок</span><span class="value">{{ lead.quiz_pages }}</span></div>
+    {% endif %}
+    {% if lead.quiz_deadline %}
+    <div class="row"><span class="label">Терміни</span><span class="value">{{ lead.quiz_deadline }}</span></div>
+    {% endif %}
+    {% if lead.quiz_budget %}
+    <div class="row"><span class="label">Бюджет</span><span class="value">{{ lead.quiz_budget }}</span></div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if lead.utm_source or lead.utm_medium or lead.utm_campaign or lead.source_url %}
+  <div class="section">
+    <p class="section-title">Джерело</p>
+    {% if lead.source_url %}
+    <div class="row"><span class="label">Сторінка</span><span class="value">{{ lead.source_url }}</span></div>
+    {% endif %}
+    {% if lead.utm_source %}
+    <div class="row"><span class="label">UTM source</span><span class="value">{{ lead.utm_source }}</span></div>
+    {% endif %}
+    {% if lead.utm_medium %}
+    <div class="row"><span class="label">UTM medium</span><span class="value">{{ lead.utm_medium }}</span></div>
+    {% endif %}
+    {% if lead.utm_campaign %}
+    <div class="row"><span class="label">UTM campaign</span><span class="value">{{ lead.utm_campaign }}</span></div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="footer">DOuIT &mdash; автоматичне повідомлення про нову заявку</div>
+</div>
+</body>
+</html>
