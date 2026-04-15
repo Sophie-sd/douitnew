@@ -1149,14 +1149,6 @@
     translate: 0 0;
   }
 
-  .messenger-fab__section-label {
-    font-size: var(--fs-xs);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--clr-text-muted);
-  }
-
   .messenger-fab__links {
     display: flex;
     flex-direction: column;
@@ -1186,68 +1178,6 @@
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-  }
-
-  .messenger-fab__sep {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.07);
-    margin-block: var(--sp-xs);
-  }
-
-  /* Compact form inside FAB */
-  .fab-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-sm);
-  }
-
-  .fab-form__field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .fab-form__input {
-    width: 100%;
-    padding: 0.6rem 0.875rem;
-    font-size: 16px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-sm);
-    color: var(--clr-text);
-    min-height: 44px;
-    transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
-  }
-
-  .fab-form__input:focus {
-    outline: none;
-    border-color: var(--clr-accent);
-    box-shadow: 0 0 0 3px rgba(59, 92, 198, 0.15);
-  }
-
-  .fab-form__input::placeholder {
-    color: var(--clr-text-muted);
-  }
-
-  .fab-form__consent {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--sp-sm);
-    cursor: pointer;
-    font-size: var(--fs-xs);
-    color: var(--clr-text-muted);
-    line-height: 1.45;
-  }
-
-  .fab-form__error {
-    font-size: var(--fs-xs);
-    color: var(--clr-error);
-  }
-
-  .fab-form__btn {
-    font-size: var(--fs-sm);
-    padding-block: 0.65rem;
-    min-height: 44px;
   }
 
   /* ===== PAIN/SOLUTION — glass cards ===== */

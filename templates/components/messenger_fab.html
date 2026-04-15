@@ -3,8 +3,6 @@
 
   <div class="messenger-fab__panel" role="group" aria-label="{% trans "Варіанти зв'язку" %}">
 
-    <!-- Self-contact -->
-    <p class="messenger-fab__section-label">{% trans "Зв'язатися самостійно" %}</p>
     <div class="messenger-fab__links">
       <a href="tel:+380686119150" class="messenger-fab__link" aria-label="{% trans "Зателефонувати" %}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -21,12 +19,6 @@
         <span>Telegram</span>
       </a>
     </div>
-
-    <div class="messenger-fab__sep" aria-hidden="true"></div>
-
-    <!-- Callback form -->
-    <p class="messenger-fab__section-label">{% trans "Замовити зворотній дзвінок" %}</p>
-    {% include "components/fab_form.html" %}
 
   </div>
 
