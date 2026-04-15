@@ -87,6 +87,56 @@ def submit_lead(request):
 
 
 @require_POST
+def submit_fab(request):
+    if not request.headers.get("HX-Request"):
+        return HttpResponse(status=400)
+
+    if _is_rate_limited(request):
+        return HttpResponse(
+            render_to_string("components/fab_form.html", {
+                "rate_limited": True,
+            }, request=request)
+        )
+
+    form = LeadForm(request.POST)
+    if form.is_valid():
+        if not form.cleaned_data.get("website"):
+            _save_lead(form)
+        return _redirect_thank_you()
+
+    return HttpResponse(
+        render_to_string("components/fab_form.html", {
+            "form": form,
+        }, request=request)
+    )
+
+
+@require_POST
+def submit_footer(request):
+    if not request.headers.get("HX-Request"):
+        return HttpResponse(status=400)
+
+    if _is_rate_limited(request):
+        return HttpResponse(
+            render_to_string("components/footer_form.html", {
+                "rate_limited": True,
+            }, request=request)
+        )
+
+    form = LeadForm(request.POST)
+    if form.is_valid():
+        if not form.cleaned_data.get("website"):
+            _save_lead(form)
+        return _redirect_thank_you()
+
+    return HttpResponse(
+        render_to_string("components/footer_form.html", {
+            "form": form,
+        }, request=request)
+    )
+
+
+@require_POST
 def submit_modal(request):
     if not request.headers.get("HX-Request"):
         return HttpResponse(status=400)

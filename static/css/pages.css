@@ -100,4 +100,99 @@
     text-align: center;
     color: var(--clr-text-muted);
   }
+
+  /* ===== LEGAL PAGES ===== */
+
+  /* white canvas between dark header & footer */
+  main.legal-main {
+    background: #ffffff;
+    color: #1e1e2e;
+  }
+
+  .legal-page {
+    padding-block: var(--sp-3xl) var(--sp-section);
+    max-width: 56rem;
+  }
+
+  main.legal-main .legal-page__title {
+    font-family: var(--ff-display);
+    font-size: var(--fs-2xl);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: var(--sp-2xl);
+    color: #3b5cc6;
+    /* override gradient to solid blue on white */
+    background: none;
+    -webkit-text-fill-color: #3b5cc6;
+  }
+
+  main.legal-main .legal-page__body {
+    color: #2d2d3f;
+    line-height: 1.8;
+    font-size: var(--fs-base);
+  }
+
+  main.legal-main .legal-page__body h2 {
+    font-family: var(--ff-display);
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    color: #3b5cc6;
+    margin-block: var(--sp-2xl) var(--sp-md);
+    padding-bottom: var(--sp-sm);
+    border-bottom: 2px solid rgba(59, 92, 198, 0.15);
+  }
+
+  main.legal-main .legal-page__body h3 {
+    font-size: var(--fs-md);
+    font-weight: 600;
+    color: #1e1e2e;
+    margin-block: var(--sp-lg) var(--sp-sm);
+  }
+
+  main.legal-main .legal-page__body p,
+  main.legal-main .legal-page__body li {
+    margin-bottom: var(--sp-md);
+  }
+
+  main.legal-main .legal-page__body ul,
+  main.legal-main .legal-page__body ol {
+    padding-left: var(--sp-lg);
+    margin-bottom: var(--sp-md);
+  }
+
+  main.legal-main .legal-page__body ul {
+    list-style: disc;
+  }
+
+  main.legal-main .legal-page__body ol {
+    list-style: decimal;
+  }
+
+  main.legal-main .legal-page__body a {
+    color: #3b5cc6;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  main.legal-main .legal-page__body a:hover {
+    color: #2d4aaf;
+  }
+
+  main.legal-main .legal-page__body strong {
+    font-weight: 700;
+    color: #1e1e2e;
+  }
+
+  main.legal-main .legal-page__body .legal-meta {
+    font-size: var(--fs-sm);
+    color: #6b6b8a;
+    margin-bottom: var(--sp-2xl);
+    padding-bottom: var(--sp-lg);
+    border-bottom: 1px solid rgba(59, 92, 198, 0.1);
+  }
+
+  main.legal-main .legal-page__placeholder {
+    color: #6b6b8a;
+    font-style: italic;
+  }
 }

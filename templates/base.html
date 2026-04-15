@@ -85,7 +85,7 @@
 
   <div id="page-loader" class="htmx-indicator" aria-hidden="true"></div>
 
-  <main>
+  <main class="{% block main_class %}{% endblock %}">
     {% block content %}{% endblock %}
   </main>
 

@@ -1,0 +1,75 @@
+{% load i18n %}
+<form class="lead-form lead-form--footer"
+      hx-post="{% url 'leads:submit_footer' %}"
+      hx-target="closest .lead-form"
+      hx-swap="outerHTML"
+      hx-indicator="find .btn"
+      hx-history="false">
+  {% csrf_token %}
+
+  <p class="lead-form__heading">{% trans "Отримати консультацію" %}</p>
+
+  {% if rate_limited %}
+  <p class="lead-form__rate-error">{% trans "Забагато заявок. Спробуйте за кілька хвилин." %}</p>
+  {% endif %}
+
+  <div class="lead-form__field">
+    <label class="lead-form__label" for="footer_name">
+      {% trans "Ім'я" %} <span class="lead-form__required" aria-hidden="true">*</span>
+    </label>
+    <input class="lead-form__input"
+           type="text"
+           name="name"
+           id="footer_name"
+           placeholder="{% trans "Введіть ваше ім'я" %}"
+           autocomplete="name"
+           required
+           {% if form and form.name.value %}value="{{ form.name.value }}"{% endif %}>
+    {% if form and form.name.errors %}
+    <p class="lead-form__error">{{ form.name.errors.0 }}</p>
+    {% endif %}
+  </div>
+
+  <div class="lead-form__field">
+    <label class="lead-form__label" for="footer_contact">
+      {% trans "Номер телефону" %} <span class="lead-form__required" aria-hidden="true">*</span>
+    </label>
+    <input class="lead-form__input"
+           type="tel"
+           name="contact"
+           id="footer_contact"
+           placeholder="+38(0__)___-__-__"
+           autocomplete="tel"
+           data-phone-ua
+           required
+           {% if form and form.contact.value %}value="{{ form.contact.value }}"{% endif %}>
+    {% if form and form.contact.errors %}
+    <p class="lead-form__error">{{ form.contact.errors.0 }}</p>
+    {% endif %}
+  </div>
+
+  <div class="lead-form__field">
+    <label class="lead-form__consent">
+      <input class="lead-form__checkbox" type="checkbox" required>
+      <span class="lead-form__consent-text">
+        {% trans "Даю згоду на обробку персональних даних згідно з" %}
+        <a href="{% url 'core:legal_privacy' %}" class="lead-form__consent-link" target="_blank" rel="noopener noreferrer">{% trans "політики конфіденційності" %}</a>
+      </span>
+    </label>
+  </div>
+
+  <!-- Honeypot -->
+  <div class="sr-only" aria-hidden="true">
+    <input type="text" name="website" tabindex="-1" autocomplete="off">
+  </div>
+
+  <!-- UTM -->
+  <input type="hidden" name="utm_source" data-utm="source">
+  <input type="hidden" name="utm_medium" data-utm="medium">
+  <input type="hidden" name="utm_campaign" data-utm="campaign">
+  <input type="hidden" name="source_url" data-utm="url">
+
+  <button type="submit" class="btn btn--primary btn--block">
+    {% trans "Відправити" %}
+  </button>
+</form>
