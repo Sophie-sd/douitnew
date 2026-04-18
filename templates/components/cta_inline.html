@@ -1,8 +1,8 @@
 {% load i18n %}
 <div class="cta-inline">
-  <span class="cta-inline__badge">{{ cta_badge }}</span>
+  {% if cta_badge %}<span class="cta-inline__badge">{{ cta_badge }}</span>{% endif %}
   <p class="cta-inline__text">{{ cta_text|default:"Готові обговорити ваш проєкт?" }}</p>
-  <button type="button" class="btn btn--primary btn--lg" data-open-contact>
+  <button type="button" class="btn btn--primary btn--lg" {% if cta_modal %}data-open-modal{% else %}data-open-contact{% endif %}>
     {{ cta_button|default:"Залишити заявку" }}
   </button>
   <p class="cta-inline__note">{% trans "Відповімо протягом 30 хвилин" %}</p>

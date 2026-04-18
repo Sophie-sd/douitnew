@@ -172,7 +172,7 @@ class Command(BaseCommand):
         if not settings.email:
             settings.email = "hello@douit.com.ua"
             settings.phone = "+380 XX XXX XX XX"
-            settings.telegram_url = "https://t.me/douit"
+            settings.telegram_url = "https://t.me/douit_ua"
             settings.whatsapp_url = "https://wa.me/380XXXXXXXXX"
             settings.save()
             self.stdout.write(self.style.SUCCESS("SiteSettings seeded"))

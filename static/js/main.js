@@ -61,7 +61,13 @@ function initStickyCta() {
 
   const stickyCta = document.querySelector(SELECTORS.stickyCta);
   const hero = document.querySelector(SELECTORS.hero);
-  if (!stickyCta || !hero) return;
+  if (!stickyCta || !hero) {
+    if (stickyCta) {
+      stickyCta.classList.remove("is-visible");
+      stickyCta.setAttribute("aria-hidden", "true");
+    }
+    return;
+  }
 
   stickyObserver = new IntersectionObserver(
     ([entry]) => {

@@ -27,6 +27,12 @@ urlpatterns = [
     *i18n_patterns(
         path("dyakuyemo/", RedirectView.as_view(pattern_name="leads:thank_you", permanent=True)),
         path("rozrahunok/", RedirectView.as_view(pattern_name="leads:quiz_page", permanent=True)),
+        # 301 redirects for old legal URL prefix
+        path("pravova-informatsiia/publichnyi-dohovir/", RedirectView.as_view(pattern_name="core:legal_public_contract", permanent=True)),
+        path("pravova-informatsiia/polityka-konfidentsiinosti/", RedirectView.as_view(pattern_name="core:legal_privacy", permanent=True)),
+        path("pravova-informatsiia/polityka-cookies/", RedirectView.as_view(pattern_name="core:legal_cookies", permanent=True)),
+        path("pravova-informatsiia/polityka-povernennia/", RedirectView.as_view(pattern_name="core:legal_refund", permanent=True)),
+        path("pravova-informatsiia/intelektualna-vlasnist/", RedirectView.as_view(pattern_name="core:legal_ip", permanent=True)),
         path("leads/", include("apps.leads.urls")),
         path("", include("apps.services.urls")),
         path("", include("apps.core.urls")),

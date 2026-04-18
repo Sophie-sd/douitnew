@@ -38,14 +38,17 @@
     box-shadow: var(--glow-accent-strong);
   }
 
-  .btn--ghost {
+  .btn--ghost,
+  .btn--outline {
     background-color: transparent;
     color: var(--clr-text);
     border-color: var(--clr-outline-muted);
   }
 
   .btn--ghost:hover,
-  .btn--ghost:focus-visible {
+  .btn--ghost:focus-visible,
+  .btn--outline:hover,
+  .btn--outline:focus-visible {
     border-color: var(--clr-accent);
     color: var(--clr-accent);
     box-shadow: var(--glow-accent-subtle);
@@ -1053,7 +1056,6 @@
     }
   }
 
-  /* ===== MESSENGER FAB ===== */
   /* ===== MESSENGER FAB ===== */
   .messenger-fab {
     position: fixed;
