@@ -1378,8 +1378,13 @@
     font-family: var(--ff-display);
     font-size: var(--fs-lg);
     font-weight: 700;
+    line-height: 1.25;
     margin-bottom: var(--sp-md);
     text-align: center;
+  }
+
+  .lead-modal--quiz .quiz__title {
+    font-size: var(--fs-md);
   }
 
   .quiz__hint {

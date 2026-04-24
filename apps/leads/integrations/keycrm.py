@@ -4,6 +4,8 @@ from typing import Optional
 import requests
 from django.conf import settings
 
+from .. import quiz_labels
+
 logger = logging.getLogger(__name__)
 
 CARDS_ENDPOINT = "/pipelines/cards"
@@ -16,13 +18,13 @@ def _build_manager_comment(lead) -> str:
 
     quiz_lines: list[str] = []
     if lead.quiz_features:
-        quiz_lines.append(f"Функціонал: {lead.quiz_features}")
+        quiz_lines.append(f"Функціонал: {quiz_labels.humanize_features(lead.quiz_features)}")
     if lead.quiz_pages:
-        quiz_lines.append(f"Сторінок: {lead.quiz_pages}")
+        quiz_lines.append(f"Сторінок: {quiz_labels.humanize(lead.quiz_pages, quiz_labels.QUIZ_PAGES)}")
     if lead.quiz_deadline:
-        quiz_lines.append(f"Терміни: {lead.quiz_deadline}")
+        quiz_lines.append(f"Терміни: {quiz_labels.humanize(lead.quiz_deadline, quiz_labels.QUIZ_DEADLINE)}")
     if lead.quiz_budget:
-        quiz_lines.append(f"Бюджет: {lead.quiz_budget}")
+        quiz_lines.append(f"Бюджет: {quiz_labels.humanize(lead.quiz_budget, quiz_labels.QUIZ_BUDGET)}")
     if quiz_lines:
         parts.append("— Квіз —\n" + "\n".join(quiz_lines))
 

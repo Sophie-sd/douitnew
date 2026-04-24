@@ -45,16 +45,16 @@
   <div class="section">
     <p class="section-title">Квіз</p>
     {% if lead.quiz_features %}
-    <div class="row"><span class="label">Функціонал</span><span class="value">{{ lead.quiz_features }}</span></div>
+    <div class="row"><span class="label">Функціонал</span><span class="value">{{ quiz_features_human }}</span></div>
     {% endif %}
     {% if lead.quiz_pages %}
-    <div class="row"><span class="label">Кількість сторінок</span><span class="value">{{ lead.quiz_pages }}</span></div>
+    <div class="row"><span class="label">Кількість сторінок</span><span class="value">{{ quiz_pages_human }}</span></div>
     {% endif %}
     {% if lead.quiz_deadline %}
-    <div class="row"><span class="label">Терміни</span><span class="value">{{ lead.quiz_deadline }}</span></div>
+    <div class="row"><span class="label">Терміни</span><span class="value">{{ quiz_deadline_human }}</span></div>
     {% endif %}
     {% if lead.quiz_budget %}
-    <div class="row"><span class="label">Бюджет</span><span class="value">{{ lead.quiz_budget }}</span></div>
+    <div class="row"><span class="label">Бюджет</span><span class="value">{{ quiz_budget_human }}</span></div>
     {% endif %}
   </div>
   {% endif %}
