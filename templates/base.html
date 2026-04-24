@@ -94,7 +94,7 @@
 
   <!-- Mobile menu overlay -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <button class="mobile-menu__close" aria-label="Закрити меню" data-menu-close>
+    <button class="mobile-menu__close" aria-label="{% trans 'Закрити меню' %}" data-menu-close>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
     <a href="{% url 'core:home' %}" class="mobile-menu__link">{% trans "Головна" %}</a>

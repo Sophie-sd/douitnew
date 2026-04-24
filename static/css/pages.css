@@ -195,4 +195,24 @@
     color: #6b6b8a;
     font-style: italic;
   }
+
+  /* ===== 404 page ===== */
+  .page-404 {
+    min-height: 80dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .page-404__code {
+    font-family: var(--ff-display);
+    font-size: var(--fs-3xl);
+    font-weight: 800;
+    margin-bottom: var(--sp-md);
+  }
+
+  .page-404__subtitle {
+    margin-inline: auto;
+  }
 }

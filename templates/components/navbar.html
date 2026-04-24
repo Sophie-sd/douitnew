@@ -1,6 +1,6 @@
 {% load static i18n %}<header class="navbar">
-  <nav class="navbar__inner container" aria-label="Основна навігація">
-    <a href="{% url 'core:home' %}" class="navbar__logo" aria-label="DOuIT — головна">DO<span>u</span>IT</a>
+  <nav class="navbar__inner container" aria-label="{% trans 'Основна навігація' %}">
+    <a href="{% url 'core:home' %}" class="navbar__logo" aria-label="{% trans 'DOuIT — головна' %}">DO<span>u</span>IT</a>
 
     <div class="navbar__links">
       <a href="{% url 'services:ecommerce' %}" class="navbar__link">{% trans "Інтернет-магазини" %}</a>
@@ -9,7 +9,7 @@
       <button type="button" class="btn btn--primary btn--sm" data-open-contact>{% trans "Замовити сайт" %}</button>
     </div>
 
-    <button class="navbar__toggle" aria-label="Відкрити меню" aria-expanded="false" data-menu-toggle>
+    <button class="navbar__toggle" aria-label="{% trans 'Відкрити меню' %}" aria-expanded="false" data-menu-toggle>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
     </button>
   </nav>

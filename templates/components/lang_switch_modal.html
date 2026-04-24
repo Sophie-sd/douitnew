@@ -1,9 +1,10 @@
+{% load i18n %}
 <dialog class="lang-modal" id="lang-switch-modal" aria-labelledby="lang-modal-title">
   <div class="lang-modal__inner">
-    <p id="lang-modal-title" class="lang-modal__question">Бажаєте продовжити українською?</p>
+    <p id="lang-modal-title" class="lang-modal__question">{% trans "Бажаєте продовжити українською?" %}</p>
     <div class="lang-modal__actions">
-      <a href="#" class="btn btn--primary" id="lang-modal-switch">Перейти на українську</a>
-      <button type="button" class="btn btn--ghost" id="lang-modal-stay">Продовжити</button>
+      <a href="#" class="btn btn--primary" id="lang-modal-switch">{% trans "Перейти на українську" %}</a>
+      <button type="button" class="btn btn--ghost" id="lang-modal-stay">{% trans "Продовжити" %}</button>
     </div>
   </div>
 </dialog>

@@ -20,6 +20,10 @@ class TestimonialAdmin(admin.ModelAdmin):
     list_filter = ("is_active", "rating")
     list_editable = ("is_active", "order")
     search_fields = ("name", "company")
+    fieldsets = (
+        (None, {"fields": ("name", "company", "text", "rating", "is_active", "order")}),
+        ("Russian / Русский", {"fields": ("name_ru", "company_ru", "text_ru"), "classes": ("collapse",)}),
+    )
 
 
 @admin.register(PortfolioItem)
@@ -28,3 +32,7 @@ class PortfolioItemAdmin(admin.ModelAdmin):
     list_filter = ("is_active", "service_type")
     list_editable = ("is_active", "order")
     search_fields = ("title",)
+    fieldsets = (
+        (None, {"fields": ("title", "url", "screenshot", "description", "service_type", "is_active", "order")}),
+        ("Russian / Русский", {"fields": ("title_ru", "description_ru"), "classes": ("collapse",)}),
+    )

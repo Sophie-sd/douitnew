@@ -71,8 +71,8 @@
         <p class="pain-card__text">{% trans "Потрібна нова функція? Інтеграція з CRM? Особливий кошик? На чистому коді все можливо — без обмежень шаблону." %}</p>
       </div>
     </div>
-    {% trans "Хочете швидкий і гнучкий сайт?" as cta_txt %}{% trans "Безкоштовна консультація" as cta_btn %}
-    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge="Консультація" %}
+    {% trans "Хочете швидкий і гнучкий сайт?" as cta_txt %}{% trans "Безкоштовна консультація" as cta_btn %}{% trans "Консультація" as cta_b %}
+    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge=cta_b %}
   </div>
 </section>
 
@@ -92,8 +92,8 @@
         {% include "components/service_card.html" %}
       {% endfor %}
     </div>
-    {% trans "Не знаєте, що обрати?" as cta_txt %}{% trans "Отримати консультацію" as cta_btn %}
-    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge="Допоможемо обрати" %}
+    {% trans "Не знаєте, що обрати?" as cta_txt %}{% trans "Отримати консультацію" as cta_btn %}{% trans "Допоможемо обрати" as cta_b %}
+    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge=cta_b %}
   </div>
 </section>
 
@@ -137,8 +137,8 @@
 </section>
 
 <div class="container">
-  {% trans "Дізнайтеся вартість вашого проєкту" as cta_txt %}{% trans "Розрахувати вартість" as cta_btn %}
-  {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge="Без зобов'язань" %}
+  {% trans "Дізнайтеся вартість вашого проєкту" as cta_txt %}{% trans "Розрахувати вартість" as cta_btn %}{% trans "Без зобов'язань" as cta_b %}
+  {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge=cta_b %}
 </div>
 
 <!-- ===== PORTFOLIO ===== -->
@@ -162,8 +162,8 @@
       </article>
       {% endfor %}
     </div>
-    {% trans "Хочете такий самий результат?" as cta_txt %}{% trans "Обговорити проєкт" as cta_btn %}
-    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge="Безкоштовна оцінка" %}
+    {% trans "Хочете такий самий результат?" as cta_txt %}{% trans "Обговорити проєкт" as cta_btn %}{% trans "Безкоштовна оцінка" as cta_b %}
+    {% include "components/cta_inline.html" with cta_text=cta_txt cta_button=cta_btn cta_badge=cta_b %}
   </div>
 </section>
 {% endif %}

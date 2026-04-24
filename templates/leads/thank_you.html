@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Дякуємо за заявку | DOuIT{% endblock %}
-{% block meta_description %}Ваша заявка прийнята. Ми зв'яжемося з вами найближчим часом.{% endblock %}
+{% block title %}{% trans "Дякуємо за заявку | DOuIT" %}{% endblock %}
+{% block meta_description %}{% trans "Ваша заявка прийнята. Ми зв'яжемося з вами найближчим часом." %}{% endblock %}
 
 {% block extra_head %}
 <meta name="robots" content="noindex, nofollow">
@@ -18,9 +19,9 @@
           <defs><linearGradient id="ty-grad" x1="0" y1="0" x2="80" y2="80"><stop stop-color="#3b5cc6"/><stop offset="1" stop-color="#6b8cff"/></linearGradient></defs>
         </svg>
       </div>
-      <h1 class="thank-you__title">Дякуємо за заявку!</h1>
-      <p class="thank-you__text">Ми отримали ваше звернення та зв'яжемося з вами протягом кількох годин.</p>
-      <a href="{% url 'core:home' %}" class="btn btn--primary btn--lg">Повернутися на головну</a>
+      <h1 class="thank-you__title">{% trans "Дякуємо за заявку!" %}</h1>
+      <p class="thank-you__text">{% trans "Ми отримали ваше звернення та зв'яжемося з вами протягом кількох годин." %}</p>
+      <a href="{% url 'core:home' %}" class="btn btn--primary btn--lg">{% trans "Повернутися на головну" %}</a>
     </div>
   </div>
 </section>

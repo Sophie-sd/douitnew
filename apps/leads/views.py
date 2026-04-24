@@ -6,6 +6,7 @@ from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView
 
 from .forms import LeadForm, ModalLeadForm
+from .integrations.keycrm import send_lead_to_keycrm
 from .notifications import send_lead_email
 
 
@@ -47,6 +48,7 @@ def _save_lead(form):
     lead.quiz_budget = cd.get("quiz_budget", "")
     lead.save()
     send_lead_email(lead)
+    send_lead_to_keycrm(lead)
     return lead
 
 

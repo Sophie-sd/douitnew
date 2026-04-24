@@ -1,6 +1,7 @@
 import re
 
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 from .models import Lead
 
@@ -22,7 +23,7 @@ class LeadForm(forms.ModelForm):
         model = Lead
         fields = ["name", "contact", "project_type", "comment"]
         widgets = {
-            "name": forms.TextInput(attrs={"placeholder": "Ваше ім'я", "autocomplete": "name"}),
+            "name": forms.TextInput(attrs={"placeholder": _("Ваше ім'я"), "autocomplete": "name"}),
             "contact": forms.TextInput(
                 attrs={
                     "placeholder": "+38(0__)___-__-__",
@@ -32,7 +33,7 @@ class LeadForm(forms.ModelForm):
                 }
             ),
             "project_type": forms.Select(),
-            "comment": forms.Textarea(attrs={"placeholder": "Розкажіть про проєкт (необов'язково)", "rows": 3}),
+            "comment": forms.Textarea(attrs={"placeholder": _("Розкажіть про проєкт (необов'язково)"), "rows": 3}),
         }
 
     def clean_contact(self):
@@ -47,7 +48,7 @@ class LeadForm(forms.ModelForm):
         normalized = f"+{digits}"
         if not self.UA_PHONE_RE.match(normalized):
             raise forms.ValidationError(
-                "Введіть коректний український номер телефону."
+                _("Введіть коректний український номер телефону.")
             )
         return normalized
 
@@ -64,7 +65,7 @@ class ModalLeadForm(forms.ModelForm):
             "data-phone-ua": "",
             "type": "tel",
         }),
-        label="Телефон",
+        label=_("Телефон"),
     )
     website = forms.CharField(
         required=False,
@@ -86,7 +87,7 @@ class ModalLeadForm(forms.ModelForm):
                   "quiz_deadline", "quiz_budget"]
         widgets = {
             "name": forms.TextInput(attrs={
-                "placeholder": "Ваше ім'я",
+                "placeholder": _("Ваше ім'я"),
                 "autocomplete": "name",
             }),
             "project_type": forms.Select(),
@@ -98,7 +99,7 @@ class ModalLeadForm(forms.ModelForm):
         raw = re.sub(r"[\s\-\(\)]", "", self.cleaned_data["phone"])
         if not self.UA_PHONE_RE.match(raw):
             raise forms.ValidationError(
-                "Введіть коректний український номер: +380 XX XXX XXXX"
+                _("Введіть коректний український номер: +380 XX XXX XXXX")
             )
         if not raw.startswith("+"):
             raw = "+" + raw

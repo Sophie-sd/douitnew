@@ -1,5 +1,5 @@
-<article class="testimonial-card">
-  <div class="testimonial-card__stars" aria-label="Рейтинг: {{ testimonial.rating }} з 5">
+{% load i18n %}<article class="testimonial-card">
+  <div class="testimonial-card__stars" aria-label="{% blocktrans with rating=testimonial.rating %}Рейтинг: {{ rating }} з 5{% endblocktrans %}">
     {% for i in "12345" %}{% if forloop.counter <= testimonial.rating %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}
   </div>
   <blockquote class="testimonial-card__text">{{ testimonial.text }}</blockquote>

@@ -33,6 +33,9 @@ class Testimonial(models.Model):
     name = models.CharField("Ім'я", max_length=120)
     company = models.CharField("Компанія", max_length=120, blank=True)
     text = models.TextField("Відгук")
+    name_ru = models.CharField("Ім'я (RU)", max_length=120, blank=True)
+    company_ru = models.CharField("Компанія (RU)", max_length=120, blank=True)
+    text_ru = models.TextField("Відгук (RU)", blank=True)
     rating = models.PositiveSmallIntegerField(
         "Рейтинг",
         default=5,
@@ -56,6 +59,8 @@ class PortfolioItem(models.Model):
     url = models.URLField("URL проєкту", blank=True)
     screenshot = models.ImageField("Скріншот", upload_to="portfolio/")
     description = models.TextField("Опис", max_length=300)
+    title_ru = models.CharField("Назва (RU)", max_length=200, blank=True)
+    description_ru = models.TextField("Опис (RU)", max_length=300, blank=True)
     service_type = models.ForeignKey(
         "services.ServicePage",
         on_delete=models.SET_NULL,

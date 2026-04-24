@@ -1,24 +1,25 @@
-{% load static %}<!DOCTYPE html>
-<html lang="uk">
+{% load static i18n %}<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Сторінку не знайдено | DOuIT</title>
+  <title>{% trans "Сторінку не знайдено | DOuIT" %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Onest:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   <link rel="stylesheet" href="{% static 'css/components.css' %}">
+  <link rel="stylesheet" href="{% static 'css/pages.css' %}">
   <link rel="stylesheet" href="{% static 'css/utilities.css' %}">
   <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
 </head>
 <body>
-  <main class="section" style="min-height:80dvh;display:flex;align-items:center;justify-content:center;text-align:center">
+  <main class="section page-404">
     <div class="container">
-      <p class="text-accent" style="font-family:var(--ff-display);font-size:var(--fs-3xl);font-weight:800;margin-bottom:var(--sp-md)">404</p>
-      <h1 class="section__title">Сторінку не знайдено</h1>
-      <p class="section__subtitle" style="margin-inline:auto">Ця сторінка не існує або була видалена.</p>
-      <a href="/" class="btn btn--primary btn--lg">На головну</a>
+      <p class="text-accent page-404__code">404</p>
+      <h1 class="section__title">{% trans "Сторінку не знайдено" %}</h1>
+      <p class="section__subtitle page-404__subtitle">{% trans "Ця сторінка не існує або була видалена." %}</p>
+      <a href="/" class="btn btn--primary btn--lg">{% trans "На головну" %}</a>
     </div>
   </main>
 </body>

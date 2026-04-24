@@ -100,3 +100,9 @@ CACHES = {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
     }
 }
+
+KEYCRM_API_TOKEN = os.environ.get("KEYCRM_API_TOKEN", "")
+KEYCRM_PIPELINE_ID = int(os.environ.get("KEYCRM_PIPELINE_ID", "0") or 0)
+KEYCRM_SOURCE_ID = int(os.environ.get("KEYCRM_SOURCE_ID", "0") or 0)
+KEYCRM_API_URL = os.environ.get("KEYCRM_API_URL", "https://openapi.keycrm.app/v1")
+KEYCRM_TIMEOUT = float(os.environ.get("KEYCRM_TIMEOUT", "5"))

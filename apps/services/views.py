@@ -1,7 +1,7 @@
 import json
 
 from django.shortcuts import get_object_or_404
-from django.utils.translation import get_language
+from django.utils.translation import get_language, gettext as _
 from django.views.generic import DetailView
 
 from .models import ServicePage
@@ -96,7 +96,7 @@ class ServiceDetailView(DetailView):
                         "@type": "PriceSpecification",
                         "price": str(page.price_from),
                         "priceCurrency": "USD",
-                        "description": f"від {page.price_currency}{page.price_from}",
+                        "description": f"{_('від')} {page.price_currency}{page.price_from}",
                     },
                 },
             },
